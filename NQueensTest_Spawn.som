@@ -27,22 +27,20 @@ class QueensSuite usingPlatform: platform andHarness: harness = (
 |
 )(
   public class Queens = Benchmark (
-    | private size = 10. 
+    | private size = 9. 
       nSolutions ::= 0.
       private arr ::= Array new: 5000000.                                
-      private int index ::= 1.
+      private index ::= 1.
       private lock = Mutex new. |
   )(
     benchmark = (
       ^ computeResult.
     )
 
-    verifyResult: result = (
+    verifyResult: result = (        
+      (result = 352) ifFalse: [error:'Incorrect Result: ' + result].
 
-        ( 'result: ' + result) println.
-        (result = 724) ifFalse: [error:'Incorrect Result: ' + result].
-
-    ^ true.
+      ^ true.
     )
 
     private computeResult = (
@@ -50,11 +48,9 @@ class QueensSuite usingPlatform: platform andHarness: harness = (
       a := Array new: 0.
       nqueens: a and: 0.
 
-      ( 'index: ' + index ) println.
+       nSolutions := 0.
 
       arr do: [:task | task join ].
-
-      ('nSolutions: ' + nSolutions) println.
       ^ nSolutions.
     )
 
