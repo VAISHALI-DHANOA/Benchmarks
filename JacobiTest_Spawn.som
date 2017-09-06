@@ -28,8 +28,8 @@ class JacobiSuite usingPlatform: platform andHarness: harness = (
   public class Jacobi = Benchmark (
   | private epsilon = 0.0001.
     private expected = createExpected.
-    private N = 16.
-    private dataSize = 18.
+    private N = 1024.
+    private dataSize = 1026.
     private granularity = 2. |
   )(
     public benchmark = (     
@@ -46,7 +46,7 @@ class JacobiSuite usingPlatform: platform andHarness: harness = (
     ^ true.
     )
 
-    (* private createExpected = (
+     private createExpected = (
       | e |
       e := Vector new.
       e, 0.03532437858581544,0.017849813902944933,0.01192949360929535,
@@ -55,10 +55,10 @@ class JacobiSuite usingPlatform: platform andHarness: harness = (
          0.0035942981873005597,0.0032725732667924223,0.0029970514366798318,
          0.0027653688264400733,0.0025724189553933963,0.002397642724590421.
       ^ e asArray
-    ) *) (* for datasize 1024*)
+    )  (* for datasize 1024*)
 
 
-    private createExpected = (
+    (*  private createExpected = (
       | e |
       e := Vector new.
       e, 0.08592890624999999, 0.04485635375976571, 0.02953085008263595, 
@@ -67,7 +67,7 @@ class JacobiSuite usingPlatform: platform andHarness: harness = (
          0.011171329788966233, 0.011045406597036733, 0.01075206889222824, 
          0.010351325524401711, 0.009886317917326415, 0.009387419540406117.
       ^ e asArray
-    ) 
+    )  *)
 
     private computeResult = (
 
